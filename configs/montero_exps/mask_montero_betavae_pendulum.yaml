@@ -1,0 +1,35 @@
+run:
+    restore_from: continue
+    visualize: append
+    do: ['train','eval','visualize']
+    gpu_id: 0
+log:
+    project: montero_model_rep
+    group: mask_betavae_pendulum
+    wandb_mode: run
+    level: info
+data:
+    name: pendulum
+    split: train
+    num_workers: 12
+train:
+    epochs: 25
+    lr: 0.00001
+    batch_size: 64
+    checkpoint_every: 30
+    checkpoint_first: 1
+    loss: mask_betavae
+    rec_dist: bernoulli
+betavae:
+    beta: 1
+    log_components: False
+model:
+    name: mask_vae_montero_small
+vae_locatello:
+    latent_dim: 10
+eval:
+    batch_size: 1024
+    mode: last
+
+viz:
+    plots: ['generate-samples', 'data-samples', 'reconstruct', "traversals", 'reconstruct-traverse', 'gif-traversals']

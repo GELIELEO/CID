@@ -1,0 +1,1 @@
+python tools/monitor/monitor.py --port=8050 --script=base_main.py -- --config-file=configs/montero_exps/intervene_montero_betavae_shape3d.yaml --log.wandb_mode=off

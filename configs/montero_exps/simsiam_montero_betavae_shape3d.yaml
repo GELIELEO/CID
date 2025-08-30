@@ -1,0 +1,38 @@
+run:
+    restore_from: continue
+    visualize: append
+    do: ['train','eval','visualize']
+    gpu_id: 0
+    restore_hyperparams: False
+log:
+    project: montero_model_rep
+    group: simsiam_betavae_shapes3d
+    wandb_mode: run
+    level: info
+data:
+    name: shapes3d
+    num_workers: 12
+train:
+    epochs: 60
+    lr: 0.0001
+    batch_size: 1024
+    checkpoint_every: 50
+    checkpoint_first: 1
+    loss: simsiam_betavae
+    rec_dist: bernoulli
+betavae:
+    beta: 1.0
+    log_components: False
+model:
+    name: simsiam_vae_montero_small
+vae_locatello:
+    latent_dim: 10
+eval:
+    batch_size: 1024
+    mode: last
+rect:
+    coeff: 1e-1
+# scheduler:
+#     name: multistep
+#     tau: [1000,]
+#     gamma: [0.1,]

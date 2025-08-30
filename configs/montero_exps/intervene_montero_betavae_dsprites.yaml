@@ -1,0 +1,46 @@
+run:
+    restore_from: continue
+    visualize: append
+    do: ['train','eval','visualize']
+    gpu_id: 1
+    restore_hyperparams: False
+log:
+    project: montero_model_rep
+    group: intervene_betavae_dsprites
+    wandb_mode: run
+    level: info
+data:
+    name: dsprites
+    num_workers: 12
+train:
+    epochs: 60
+    lr: 1e-3
+    batch_size: 64
+    checkpoint_every: 20
+    checkpoint_first: 1
+    loss: intervene_betavae
+    rec_dist: bernoulli
+    optimizer: adamw
+betavae:
+    beta: 0.0
+    log_components: False
+model:
+    name: intervene_vae_montero_small
+vae_locatello:
+    latent_dim: 10
+viz:
+    nrows: 10
+    max_traversal: 0.2
+eval:
+    batch_size: 1024
+    mode: last
+    metrics: ['dci_d']
+rect:
+    rect_coeff: 1.0
+shuffled_betavae:
+    shuffled_coeff: 1.0
+    shuffled_target: 1
+# scheduler:
+#     name: multistep
+#     tau: [820,]
+#     gamma: [0.1,]

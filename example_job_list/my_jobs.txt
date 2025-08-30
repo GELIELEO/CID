@@ -1,0 +1,17 @@
+python base_main.py \
+--config-file=configs/examples/betavae_shapes3d.yaml \
+--log.group=betavae_shapes3d_lr-0.0003 \
+--log.wandb_mode=off \
+--train.seed=0 \
+--train.lr=0.0003 \
+--train.epochs=400 \
+--viz.show_loss=True
+
+python base_main.py \
+--config-file=configs/examples/vae_shapes3d.yaml \
+--log.group=vae_shapes3d_lr-0.0003 \
+--log.wandb_mode=off \
+--train.seed=0 \
+--train.lr=0.0003 \
+--train.epochs=400 \
+--viz.show_loss=True
