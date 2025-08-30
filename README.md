@@ -1,4 +1,4 @@
-# Code for the paper "Self-supervised Disentanglement Learning with Composition Invariance"
+# Code for the paper "Self-supervised Disentangled Representation Learning via Composition Invariance"
 
 This code is based on [Disentangling Correlated Factors via Hausdorff Factorized Support](https://github.com/karroth/disentangling-correlated-factors). Please refer to this repository to complete the training and testing environment configuration.
 
